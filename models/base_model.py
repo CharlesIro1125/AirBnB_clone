@@ -6,7 +6,9 @@ import models
 """Defines a Base Class BaseModel"""
 time = "%Y-%m-%dT%H:%M:%S.%f"
 class BaseModel:
+    """a class BaseModel"""
     def __init__(self, *args, **kwargs):
+        """initializes the class"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -41,10 +43,12 @@ class BaseModel:
             self.updated_at = datetime.utcnow()
     """
     def __str__(self):
+        """returns the string version of the object"""
         string = f"[{__class__.__name__}] ({self.id}) {self.__dict__}"
         return string
 
     def save(self):
+        """saves the instantiated properties"""
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
         models.storage.save()
