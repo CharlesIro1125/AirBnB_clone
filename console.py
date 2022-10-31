@@ -26,7 +26,6 @@ class HBNBCommand(cmd.Cmd):
     "A command line interface"
 
     prompt = '(hbnb) '
-    intro = 'Cmd interpreter'
     _interrupted = False
 
     def __init__(self):
@@ -61,10 +60,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_exit(self, line):
+        "exit out of the shell \n"
         return True
 
     def do_quit(self, line):
-        "The quit method returns True"
+        "The quit method returns True \n"
+
         if line:
             print("args passed(quit)")
         else:
