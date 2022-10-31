@@ -15,11 +15,8 @@ from os.path import exists, getsize
 class FileStorage:
     "creating a FIleStorage class"
 
-    __file_path = ""
+    __file_path = "file.json"
     __objects = {}
-
-    def __init__(self, path="file.json"):
-        FileStorage.__file_path = path
 
     def all(self):
         return self.__class__.__objects
@@ -28,20 +25,19 @@ class FileStorage:
         "add a new object"
         if obj:
             key = "{0}.{1}".format(obj.__class__.__name__, obj.id)
-            FileStorage.__objects[key] = obj
+            self.__objects[key] = obj
 
     def save(self):
         "serialize the object"
-        if exists(FileStorage.__file_path):
-            if re.search("[\\w\\d]*.json", FileStorage.__file_path):
-                with open(FileStorage.__file_path, mode="w",
-                          encoding="utf-8") as myfile:
-                    if FileStorage.__objects:
-                        dic_t = {}
-                        for i, j in FileStorage.__objects.items():
-                            if isinstance(j, BaseModel):
-                                dic_t[i] = j.to_dict()
-                        json.dump(dic_t, myfile)
+        if re.search("[\\w\\d]*.json", self.__file_path):
+            with open(self.__file_path, mode="w",
+                        encoding="utf-8") as myfile:
+                if self.__objects:
+                    dic_t = {}
+                    for i, j in self.__objects.items():
+                        if isinstance(j, BaseModel):
+                            dic_t[i] = j.to_dict()
+                    json.dump(dic_t, myfile)
 
     def reload(self):
         "deserialize the object"
