@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         "method called when an empty line is entered"
         "to the prompt"
-        return cmd.Cmd.emptyline(self)
+        pass
 
     def do_destroy(self, line):
         "delete an instance"
