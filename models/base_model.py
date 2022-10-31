@@ -35,7 +35,7 @@ class BaseModel:
     def save(self):
         "update the attribute 'updated_at' "
         from models import storage
-        "self.updated_at = datetime.now()"
+        self.updated_at = datetime.now()
         storage.save()
 
     def __str__(self):
