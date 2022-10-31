@@ -44,7 +44,7 @@ class BaseModel:
 
     def to_dict(self):
         "return instance as dictionary"
-        dictn = self.__dict__
+        dictn = self.__dict__.copy()
         dictn["__class__"] = self.__class__.__name__
         dictn["created_at"] = self.created_at.isoformat()
         dictn["updated_at"] = self.updated_at.isoformat()
