@@ -116,9 +116,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         "Print all string repr of instance"
-        if line == '':
-            print('** class name missing **')
-        elif line not in CLASSES and line != '.':
+        if line not in CLASSES and line != '.':
             print("** class doesn't exist **")
         elif line in CLASSES or line == '.':
             all_instance = storage.all()
