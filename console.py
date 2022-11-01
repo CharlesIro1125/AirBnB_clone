@@ -116,11 +116,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         "Print all string repr of instance"
-        if line not in CLASSES and line != '.':
+        if line not in CLASSES and line != '':
             print("** class doesn't exist **")
-        elif line in CLASSES or line == '.':
-            all_instance = storage.all()
-            hold = []
+        all_instance = storage.all()
+        hold = []
+        if line in CLASSES:
+            for i, j in all_instance.items():
+                if line in j.__str__():
+                    hold.append(j.__str__())
+            print(hold)
+        elif line == '':
             for i, j in all_instance.items():
                 hold.append(j.__str__())
             print(hold)
