@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 "The console entry point"
+import sys
 import cmd
 from models import storage
 from models.base_model import BaseModel
@@ -28,9 +29,8 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     _interrupted = False
 
-    def __init__(self):
+    def preloop(self):
         signal.signal(signal.SIGINT, handler=self._ctrl_c_handler)
-        super().__init__()
 
     def _ctrl_c_handler(self, signal, frame):
         print('')
