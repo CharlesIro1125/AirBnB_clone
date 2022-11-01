@@ -23,6 +23,7 @@ CLASSES = [
     "Review"
 ]
 
+
 class HBNBCommand(cmd.Cmd):
     "A command line interface"
 
@@ -88,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             elif len(lines) > 1 and lines[0] in CLASSES:
                 all_instance = storage.all()
-                idx = "{0}.{1}".format(lines[0],lines[1])
+                idx = "{0}.{1}".format(lines[0], lines[1])
                 if idx not in all_instance.keys():
                     print("** no instance found **")
                 elif idx in all_instance.keys():
@@ -107,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             elif len(lines) > 1 and lines[0] in CLASSES:
                 all_instance = storage.all()
-                idx = "{0}.{1}".format(lines[0],lines[1])
+                idx = "{0}.{1}".format(lines[0], lines[1])
                 if idx not in all_instance.keys():
                     print("** no instance found **")
                 elif idx in all_instance.keys():
@@ -142,13 +143,14 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
             elif len(lines) > 3 and lines[0] in CLASSES:
                 all_instance = storage.all()
-                idx = "{0}.{1}".format(lines[0],lines[1])
+                idx = "{0}.{1}".format(lines[0], lines[1])
                 if idx not in all_instance.keys():
                     print("** no instance found **")
                 elif idx in all_instance.keys():
                     model = all_instance[idx]
                     if isinstance(lines[3], str):
-                        model.__dict__[lines[2]] = str(lines[3].replace('"',''))
+                        model.__dict__[lines[2]] = str(lines[3].
+                                                       replace('"', ''))
                     elif isinstance(lines[3], int):
                         model.__dict__[lines[2]] = int(lines[3])
                     elif isinstance(lines[3], float):
