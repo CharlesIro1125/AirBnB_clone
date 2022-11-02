@@ -30,7 +30,7 @@ class BaseModel:
             self.id = uuid.uuid4().hex
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+        storage.new(self)
 
     def save(self):
         "update the attribute 'updated_at' "

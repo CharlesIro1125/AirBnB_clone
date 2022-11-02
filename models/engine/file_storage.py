@@ -35,7 +35,7 @@ class FileStorage:
             dic_t = {}
             for i, j in self.__objects.items():
                 dic_t[i] = j.to_dict()
-            "print('saving %s', self.__objects.items())"
+            print('saving %s', self.__objects.items())
             json.dump(dic_t, myfile)
 
     def reload(self):
@@ -44,6 +44,6 @@ class FileStorage:
             if re.search("[\\w\\d]*.json", self.__file_path):
                 with open(self.__file_path, mode="r") as myfile:
                     objs = json.load(myfile).values()
-
+                    print('reloading %s', self.__objects.items())
                     for obj in objs:
                         eval(obj["__class__"])(**obj)
