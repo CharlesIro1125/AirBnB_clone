@@ -46,4 +46,4 @@ class FileStorage:
                     for obj in objs:
                         eval(obj["__class__"])(**obj)
         else:
-            raise TypeError("File doesn't exisits")
+            return
