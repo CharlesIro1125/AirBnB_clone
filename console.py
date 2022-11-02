@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
         exit(0)
 
     def precmd(self, line):
-        storage.reload()
+        "storage.reload()"
         return cmd.Cmd.precmd(self, line)
 
     def do_EOF(self, line):
