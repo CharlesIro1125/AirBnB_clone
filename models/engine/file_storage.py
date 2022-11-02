@@ -26,7 +26,7 @@ class FileStorage:
         if obj:
             key = "{0}.{1}".format(obj.__class__.__name__, obj.id)
             self.__objects[key] = obj
-        else:
+        elif not isinstance(obj, BaseModel):
             raise AttributeError
 
     def save(self):
