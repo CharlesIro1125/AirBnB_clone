@@ -28,7 +28,8 @@ class BaseModel:
                     storage.new(args[i])
         else:
             self.id = uuid.uuid4().hex
-            self.created_at = self.updated_at = datetime.now()
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             storage.new(self)
 
     def save(self):
