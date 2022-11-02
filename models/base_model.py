@@ -10,7 +10,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         "initializing the attributes required"
         from models import storage
-        print("storage under init %s", id(storage))
+        "print('storage under init %s', id(storage))"
         if kwargs:
             for i, j in kwargs.items():
                 if i == 'id':
@@ -36,7 +36,7 @@ class BaseModel:
     def save(self):
         "update the attribute 'updated_at' "
         from models import storage
-        print("storage under save %s", id(storage))
+        "print('storage under save %s', id(storage))"
         self.updated_at = datetime.now()
         storage.save()
 
