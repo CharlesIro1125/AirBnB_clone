@@ -27,7 +27,7 @@ class FileStorage:
             key = "{0}.{1}".format(obj.__class__.__name__, obj.id)
             self.__objects[key] = obj
         else:
-            pass
+            raise AttributeError
 
     def save(self):
         "serialize the object"
