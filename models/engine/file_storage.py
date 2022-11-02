@@ -19,7 +19,7 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return self.__class__.__objects
+        return self.__objects
 
     def new(self, obj):
         "add a new object"
@@ -31,12 +31,10 @@ class FileStorage:
 
     def save(self):
         "serialize the object"
-        with open(self.__file_path, mode="w",
-                  encoding="utf-8") as myfile:
+        with open(self.__file_path, mode="w") as myfile:
             dic_t = {}
             for i, j in self.__objects.items():
-                if isinstance(j, BaseModel):
-                    dic_t[i] = j.to_dict()
+                dic_t[i] = j.to_dict()
             json.dump(dic_t, myfile)
 
     def reload(self):
