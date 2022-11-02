@@ -35,14 +35,15 @@ class FileStorage:
             dic_t = {}
             for i, j in self.__objects.items():
                 dic_t[i] = j.to_dict()
+            "print('saving %s', self.__objects.items())"
             json.dump(dic_t, myfile)
 
     def reload(self):
         "deserialize the object"
-        if exists(FileStorage.__file_path) and getsize(FileStorage.
-                                                       __file_path) > 0:
-            if re.search("[\\w\\d]*.json", FileStorage.__file_path):
-                with open(FileStorage.__file_path, mode="r") as myfile:
+        if exists(self.__file_path) and getsize(self.__file_path) > 0:
+            if re.search("[\\w\\d]*.json", self.__file_path):
+                with open(self.__file_path, mode="r") as myfile:
                     objs = json.load(myfile).values()
+
                     for obj in objs:
                         eval(obj["__class__"])(**obj)
