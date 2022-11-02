@@ -16,12 +16,12 @@ class BaseModel:
             for i, j in kwargs.items():
                 if i in ['created_at', 'updated_at']:
                     self.__dict__[i] = datetime.strptime(j, iso_format)
-                elif i != '__class__':
+                else:
                     self.__dict__[i] = j
         else:
             self.id = uuid.uuid4().hex
             self.created_at = self.updated_at = datetime.now()
-        models.storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         "update the attribute 'updated_at'"

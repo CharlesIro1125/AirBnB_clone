@@ -17,7 +17,7 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
         return self.__class__.__objects
 
@@ -27,7 +27,7 @@ class FileStorage:
             key = "{0}.{1}".format(obj.__class__.__name__, obj.id)
             self.__class__.__objects[key] = obj
         elif not isinstance(obj, BaseModel):
-            raise AttributeError
+            return
 
     def save(self):
         "serialize the object"
@@ -44,6 +44,8 @@ class FileStorage:
                 with open(self.__file_path, mode="r") as myfile:
                     objs = json.load(myfile).values()
                     for obj in objs:
-                        eval(obj["__class__"])(**obj)
+                        cls_name = obj["__class__"]
+                        del obj["__class__"]
+                        self.new(eval(cls_name)(**obj))
         else:
             return

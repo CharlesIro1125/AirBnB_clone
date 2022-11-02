@@ -110,11 +110,6 @@ class TestStorageMethods(unittest.TestCase):
         with self.assertRaises(TypeError):
             models.storage.new(BaseModel(), 1)
 
-        # What if None was passed? That guy needs learn a lesson...
-        # AttributeError, will you join us?
-        with self.assertRaises(AttributeError):
-            models.storage.new(None)
-
     def test_save_method(self):
         """Time to deal with reload() method in FileStorage class"""
         dummy_bm = BaseModel()
