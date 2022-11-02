@@ -45,3 +45,5 @@ class FileStorage:
                     objs = json.load(myfile).values()
                     for obj in objs:
                         eval(obj["__class__"])(**obj)
+        else:
+            raise TypeError("File doesn't exisits")
