@@ -31,15 +31,14 @@ class FileStorage:
 
     def save(self):
         "serialize the object"
-        if re.search("[\\w\\d]*.json", self.__file_path):
-            with open(self.__file_path, mode="w",
-                        encoding="utf-8") as myfile:
-                if self.__objects:
-                    dic_t = {}
-                    for i, j in self.__objects.items():
-                        if isinstance(j, BaseModel):
-                            dic_t[i] = j.to_dict()
-                    json.dump(dic_t, myfile)
+        with open(self.__file_path, mode="w",
+                  encoding="utf-8") as myfile:
+            if self.__objects:
+                dic_t = {}
+                for i, j in self.__objects.items():
+                    if isinstance(j, BaseModel):
+                        dic_t[i] = j.to_dict()
+                json.dump(dic_t, myfile)
 
     def reload(self):
         "deserialize the object"
