@@ -23,7 +23,7 @@ class FileStorage:
 
     def new(self, obj):
         "add a new object"
-        if obj:
+        if isinstance(obj, BaseModel):
             key = "{0}.{1}".format(obj.__class__.__name__, obj.id)
             self.__class__.__objects[key] = obj
         elif not isinstance(obj, BaseModel):
