@@ -5,5 +5,5 @@ header {
 	border-bottom: 1px solid #CCCCCC;
 	background-image: url("https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png");
 	background-position: 0 20px 0 0;
-	border: 2px solid black;
+	background-repeat: no-repeat;
 }
