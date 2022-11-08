@@ -1,15 +1,4 @@
 body {
-<<<<<<< HEAD
       margin: 0;
       padding: 0;
 }
-=======
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-		}
->>>>>>> 7a1777cd972d62697415b66eedcff709df669b8a
